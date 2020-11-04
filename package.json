@@ -1,0 +1,33 @@
+{
+  "name": "react-fpoint",
+  "version": "0.1.0",
+  "description": "react components for fpoint",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/huozhi/react-fpoint.git"
+  },
+  "keywords": [
+    "react",
+    "gesture",
+    "mouse",
+    "touch"
+  ],
+  "author": "huozhi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/huozhi/react-fpoint/issues"
+  },
+  "homepage": "https://github.com/huozhi/react-fpoint#readme",
+  "dependencies": {
+    "fpoint": "^0.2.6",
+    "typescript": "^4.0.5"
+  },
+  "devDependencies": {
+    "@types/react": "^16.9.55"
+  }
+}
