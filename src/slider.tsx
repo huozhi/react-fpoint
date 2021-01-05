@@ -3,22 +3,22 @@ import {fscrub} from 'fpoint'
 import combineRefs from './lib/combine-refs'
 
 type HandlerTypes = {
-  onScrubStart?(e?: any): void;
-  onScrubMove?(e?: any): void;
-  onScrubEnd?(e?: any): void;
-  onHoverStart?(e?: any): void;
-  onHoverMove?(e?: any): void;
-  onHoverEnd?(e?: any): void;
+  onScrubStart?(e?: Event): void;
+  onScrubMove?(e?: Event): void;
+  onScrubEnd?(e?: Event): void;
+  onHoverStart?(e?: Event): void;
+  onHoverMove?(e?: Event): void;
+  onHoverEnd?(e?: Event): void;
 }
 
 type ReleaseHandler = () => void
 
 type SliderProps = {
-  component: any,
+  component: string | React.ComponentType<any>,
   style: React.CSSProperties,
 } & HandlerTypes
 
-type MapType = {[key: string]: (e?: any) => void}
+type MapType = {[key: string]: (e?: Event) => void}
 
 const scrubOptions = {
   touch: true,
@@ -61,8 +61,8 @@ const Slider = forwardRef(function Slider(props: SliderProps, ref) {
   // when the handler executed, proxiedHandler will read the map to get the latest handler.
   handlersRef.current = handlers as MapType
 
-  const proxiedHandler = useCallback((name: string) => (event: Event) => {
-    const handler = handlersRef.current[name] || (() => {})
+  const proxiedHandler = useCallback((name: string) => (event?: Event) => {
+    const handler = handlersRef.current[name] || ((event: Event) => {})
     handler(event)
   }, [])
 
