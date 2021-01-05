@@ -9,7 +9,7 @@
     "removeComments": true,
     "strict": true,
     "typeRoots": [
-      "./types",
+      "./@types",
       "./node_modules/@types"
     ],
     "types": [
