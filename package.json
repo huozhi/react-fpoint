@@ -2,10 +2,13 @@
   "name": "react-fpoint",
   "version": "0.1.0",
   "description": "react components for fpoint",
-  "main": "dist/index.js",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "tsc"
+    "build": "yarn build:cjs && yarn build:esm",
+    "build:cjs": "tsc --outDir ./dist/cjs --module commonjs",
+    "build:esm": "tsc --outDir ./dist/cjs --module ESNext"
   },
   "repository": {
     "type": "git",
@@ -24,10 +27,13 @@
   },
   "homepage": "https://github.com/huozhi/react-fpoint#readme",
   "dependencies": {
-    "fpoint": "^0.2.6",
-    "typescript": "^4.0.5"
+    "fpoint": "0.2.6",
+    "typescript": "4.0.5"
+  },
+  "peerDependencies": {
+    "react": "^16.11.0 || ^17.0.0"
   },
   "devDependencies": {
-    "@types/react": "^16.9.55"
+    "@types/react": "16.9.55"
   }
 }
