@@ -27,7 +27,7 @@
   },
   "homepage": "https://github.com/huozhi/react-fpoint#readme",
   "dependencies": {
-    "fpoint": "0.2.6",
+    "fpoint": "0.2.8",
     "typescript": "4.0.5"
   },
   "peerDependencies": {
