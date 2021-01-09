@@ -13,7 +13,8 @@
       "./node_modules/@types"
     ],
     "types": [
-      "react"
+      "react",
+      "fpoint"
     ],
     "esModuleInterop": true,
     "skipLibCheck": true,

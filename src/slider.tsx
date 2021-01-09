@@ -1,24 +1,8 @@
-import React, {forwardRef, useRef, useEffect, useCallback} from 'react'
+import React, {forwardRef, useRef, useEffect} from 'react'
 import {fscrub} from 'fpoint'
 import combineRefs from './lib/combine-refs'
-
-type HandlerTypes = {
-  onScrubStart?(e?: Event): void;
-  onScrubMove?(e?: Event): void;
-  onScrubEnd?(e?: Event): void;
-  onHoverStart?(e?: Event): void;
-  onHoverMove?(e?: Event): void;
-  onHoverEnd?(e?: Event): void;
-}
-
-type ReleaseHandler = () => void
-
-type SliderProps = {
-  component: string | React.ComponentType<any>,
-  style: React.CSSProperties,
-} & HandlerTypes
-
-type MapType = {[key: string]: (e?: Event) => void}
+import {createHandlerProxy} from './common' 
+import {SliderProps, SliderHandlerTypes, ReleaseHandler, HandlerMap} from './@types'
 
 const scrubOptions = {
   touch: true,
@@ -44,7 +28,7 @@ const Slider = forwardRef(function Slider(props: SliderProps, ref) {
     ...rest
   } = props
 
-  const handlers: HandlerTypes = {
+  const handlers: SliderHandlerTypes = {
     onScrubStart,
     onScrubMove,
     onScrubEnd,
@@ -54,41 +38,34 @@ const Slider = forwardRef(function Slider(props: SliderProps, ref) {
   }
 
   const innerRef = useRef(null)
-  const handlersRef = useRef(handlers as MapType)
-
+  
   // NOTE: to avoid handlers change frequently causing fscrub to reattach,
   // give a map here to update handler during renfer.
   // when the handler executed, proxiedHandler will read the map to get the latest handler.
-  handlersRef.current = handlers as MapType
-
-  const proxiedHandler = useCallback((name: string) => (event?: Event) => {
-    const handler = handlersRef.current[name] || ((event: Event) => {})
-    handler(event)
-  }, [])
+  const handlersRef = useRef(handlers as HandlerMap)
+  handlersRef.current = handlers as HandlerMap
+  const proxyHandler = createHandlerProxy(handlersRef.current)
 
   useEffect(() => {
-    const dom = innerRef.current
-    const releaseHandles: Array<ReleaseHandler> = []
-    if (dom) {
-      const release = fscrub(dom, {
-        onStart: proxiedHandler('onScrubStart'),
-        onMove: proxiedHandler('onScrubMove'),
-        onEnd: proxiedHandler('onScrubEnd'),
-      }, scrubOptions)
-      releaseHandles.push(release)
-    }
-    if (dom) {
-      const release = fscrub(dom, {
-        onStart: proxiedHandler('onHoverStart'),
-        onMove: proxiedHandler('onHoverMove'),
-        onEnd: proxiedHandler('onHoverEnd'),
-      }, hoverOptions)
-      releaseHandles.push(release)
-    }
+    const dom = innerRef.current as unknown as HTMLElement
+    
+    const releaseScrub = fscrub(dom, {
+      onStart: proxyHandler('onScrubStart'),
+      onMove: proxyHandler('onScrubMove'),
+      onEnd: proxyHandler('onScrubEnd'),
+    }, scrubOptions)
+
+    const releaseHover = fscrub(dom, {
+      onStart: proxyHandler('onHoverStart'),
+      onMove: proxyHandler('onHoverMove'),
+      onEnd: proxyHandler('onHoverEnd'),
+    }, hoverOptions)
+
     return () => {
-      releaseHandles.forEach(release => release())
+      releaseScrub()
+      releaseHover()
     }
-  }, [proxiedHandler])
+  }, [])
 
   return (
     <HostComponent {...rest} ref={combineRefs(ref, innerRef)} style={{...style, touchAction: 'none'}} />
