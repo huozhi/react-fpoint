@@ -1,6 +1,6 @@
 export type HandlerMap = {[key: string]: (e?: Event) => void}
 
-export type SliderHandlerTypes = {
+export type ScrubHandlerTypes = {
   onScrubStart?(e?: Event): void;
   onScrubMove?(e?: Event): void;
   onScrubEnd?(e?: Event): void;
@@ -16,7 +16,7 @@ export type BasicComponentProps = {
   style: React.CSSProperties,
 }
 
-export type SliderProps = BasicComponentProps & SliderHandlerTypes
+export type ScrubProps = BasicComponentProps & ScrubHandlerTypes
 
 export type TapHandlerProps = {
   onTouchDown?(e?: Event): void;

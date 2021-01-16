@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>react-fpoint</title>
+<style>
+html {
+  background-color: #000000;
+  color: #fff;
+}
+* {
+  box-sizing: border-box;
+}
+
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+a,
+a:active {
+  text-decoration: none;
+  color: #3d6684;
+}
+
+a:hover {
+  color: #89a6da;
+  cursor: pointer;
+}
+
+a::before {
+  content: '>';
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  color: inherit;
+  margin-right: 8px;
+}
+
+a h4 {
+ display: inline-block;
+}
+
+.app {
+  padding-top: 20px;
+  margin: auto;
+  max-width: 640px;
+  min-height: 100vh;
+}
+
+.scrub-example {
+  margin: auto;
+  position: relative;
+  padding: 40px;
+  perspective: 400px;
+  width: 400px;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.scrub-example .cube {
+  margin: auto;
+}
+
+.togglers {
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+}
+.github__link {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  z-index: 2;
+}
+
+.cube {
+  width: 200px;
+  height: 200px;
+  position: relative;
+  transform-style: preserve-3d;
+  transform: translateZ(-100px);
+  transition: transform 1s;
+}
+
+.cube__face {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border: 2px solid black;
+  line-height: 200px;
+  font-size: 40px;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+}
+
+.cube__face--front  { background: rgba(179, 169, 116, 0.7); }
+.cube__face--right  { background: hsla(199, 100%, 87%, 0.7); }
+.cube__face--back   { background: rgba(219, 219, 157, 0.7); }
+.cube__face--left   { background: hsla(164, 100%, 89%, 0.7); }
+.cube__face--top    { background: hsla(61, 100%, 70%, 0.7); }
+.cube__face--bottom { background: hsla(189, 22%, 76%, 0.7); }
+
+.cube__face--front  { transform: rotateY(  0deg) translateZ(100px); }
+.cube__face--right  { transform: rotateY( 90deg) translateZ(100px); }
+.cube__face--back   { transform: rotateY(180deg) translateZ(100px); }
+.cube__face--left   { transform: rotateY(-90deg) translateZ(100px); }
+.cube__face--top    { transform: rotateX( 90deg) translateZ(100px); }
+.cube__face--bottom { transform: rotateX(-90deg) translateZ(100px); }
+
+label { margin-right: 10px; }
+</style>
+</head>
+<body>
+  <div id='root'></div>
+  <script src='app.jsx'></script>
+  
+  </div>
+</body>
+</html>

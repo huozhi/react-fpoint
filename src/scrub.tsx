@@ -2,7 +2,7 @@ import React, {forwardRef, useRef, useEffect} from 'react'
 import {fscrub} from 'fpoint'
 import combineRefs from './lib/combine-refs'
 import {createHandlerProxy} from './common' 
-import {SliderProps, SliderHandlerTypes, ReleaseHandler, HandlerMap} from './@types'
+import {ScrubProps, ScrubHandlerTypes, HandlerMap} from './@types'
 
 const scrubOptions = {
   touch: true,
@@ -15,9 +15,9 @@ const hoverOptions = {
   hover: true,
 }
 
-const Slider = forwardRef(function Slider(props: SliderProps, ref) {
+const Scrub = forwardRef(function Scrub(props: ScrubProps, ref) {
   const {
-    component: HostComponent,
+    component: HostComponent = 'div',
     style,
     onScrubStart,
     onScrubMove,
@@ -28,7 +28,7 @@ const Slider = forwardRef(function Slider(props: SliderProps, ref) {
     ...rest
   } = props
 
-  const handlers: SliderHandlerTypes = {
+  const handlers: ScrubHandlerTypes = {
     onScrubStart,
     onScrubMove,
     onScrubEnd,
@@ -72,8 +72,7 @@ const Slider = forwardRef(function Slider(props: SliderProps, ref) {
   )
 })
 
-Slider.defaultProps = {
-  component: 'div',
+Scrub.defaultProps = {
   onScrubStart() {},
   onScrubMove() {},
   onScrubEnd() {},
@@ -82,4 +81,4 @@ Slider.defaultProps = {
   onHoverEnd() {},
 }
 
-export default Slider
+export default Scrub

@@ -1,2 +1,2 @@
-export {default as Slider} from './slider'
+export {default as Scrub} from './scrub'
 export {default as Tap} from './tap'
