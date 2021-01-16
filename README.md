@@ -1,14 +1,16 @@
 # React Fpoint
 > A set of react components make mouse & touching easier
 
-## Usage
+![npm-version](https://img.shields.io/npm/v/react-fpoint.svg) ![license](https://img.shields.io/npm/l/react-fpoint.svg)
+
+
+## Quick Start
+
+[react-fpoint.vercel.app](https://react-fpoint.vercel.app)
 
 ```sh
 npm i -S react-fpoint
 ```
-
-## API
-
 ### `<Scurb>`
 
 `Scrub` component let you to easily attach handlers to track mouse dragging or finger scrubbing interactions. You could use it to build your custom slider, touch screen or any other advanced components you like.
