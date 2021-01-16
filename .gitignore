@@ -3,3 +3,5 @@ dist
 yalc.lock
 .yalc
 .parcel-cache
+
+.vercel
