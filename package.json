@@ -6,6 +6,7 @@
   "module": "dist/esm/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
+    "prepublishOnly": "rm -rf dist && yarn build",
     "build": "yarn build:cjs && yarn build:esm",
     "build:cjs": "tsc --outDir ./dist/cjs --module CommonJS",
     "build:esm": "tsc --outDir ./dist/esm --module ESNext"

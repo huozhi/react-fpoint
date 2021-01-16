@@ -1,6 +1,13 @@
 {
   "private": true,
+  "scripts": {
+    "clean": "rm -rf .pracel-cache && rm -rf dist",
+    "build": "yarn clean && parcel build index.html"
+  },
   "dependencies": {
-    "react-fpoint": "file:.yalc/react-fpoint"
+    "react-fpoint": "file:.."
+  },
+  "devDependencies": {
+    "parcel": "2.0.0-beta.1"
   }
 }
