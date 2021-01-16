@@ -1,6 +1,10 @@
 html {
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,"Segoe UI","Roboto","Oxygen","Ubuntu","Cantarell","Fira Sans","Droid Sans","Helvetica Neue",sans-serif;
   background-color: #000000;
   color: #fff;
+}
+body {
+  margin: 0;
 }
 * {
   box-sizing: border-box;
@@ -46,7 +50,7 @@ a h4 {
 }
 
 .app {
-  padding-top: 20px;
+  padding: 32px 16px;
   margin: auto;
   max-width: 640px;
   min-height: 100vh;
@@ -122,7 +126,6 @@ a h4 {
 
 .square {
   margin: 120px 60px;
-  transform: translate(50%);
   width: 200px;
   height: 400px;
   border: 3px solid #fff;
@@ -151,8 +154,10 @@ a h4 {
   height: 40px;
   transform-origin: center;
 }
-
+.glitter--touch {
+  background: #000;
+  border: 2px solid #fff;
+}
 .glitter--animating {
   animation: flick 0.3s ease-out;
-  
 }
