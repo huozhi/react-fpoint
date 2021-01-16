@@ -15,6 +15,10 @@
     "type": "git",
     "url": "git+ssh://git@github.com/huozhi/react-fpoint.git"
   },
+  "files": [
+    "dist",
+    "*.md"
+  ],
   "keywords": [
     "react",
     "gesture",
