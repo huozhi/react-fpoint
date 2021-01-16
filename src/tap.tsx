@@ -6,7 +6,7 @@ import {TapProps, HandlerMap} from './@types'
 
 const Tap = forwardRef(function Tap(props : TapProps, ref) {
   const {
-    component: Component,
+    component: Component = 'div',
     onTouchDown,
     onTouchUp,
     onTouchClick,
@@ -47,9 +47,20 @@ const Tap = forwardRef(function Tap(props : TapProps, ref) {
     })
     return relase
   }, [])
-  return <Component {...rest} ref={combineRefs(ref, innerRef)} />
   
+  return <Component {...rest} ref={combineRefs(ref, innerRef)} />
 })
+
+Tap.defaultProps = {
+  onTouchDown() {},
+  onTouchUp() {},
+  onTouchClick() {},
+  onMouseDown() {},
+  onMouseUp() {},
+  onMouseClick() {},
+  onHoverEnter() {},
+  onHoverLeave() {},
+}
 
 export default Tap
 
