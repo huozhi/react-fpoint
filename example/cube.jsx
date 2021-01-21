@@ -1,9 +1,9 @@
 import React from 'react'
 
-export default function Cube({x = 0, y = 0}) {
+export default function Cube({x = 0, y = 0, isActive = false}) {
   return (
     <div 
-      className="cube" 
+      className={`cube cube--${isActive ? 'active' : 'silent'}`} 
       style={{
         transform: `translateZ(-100px) rotate(${x}deg) rotateY(${y}deg)`,
       }}

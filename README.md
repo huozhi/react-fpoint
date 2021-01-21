@@ -3,6 +3,7 @@
 
 ![npm-version](https://img.shields.io/npm/v/react-fpoint.svg) ![license](https://img.shields.io/npm/l/react-fpoint.svg)
 
+Checkout the [fpoint](https://github.com/huozhi/fpoint) project for details that how it works internally and why I design this. In a short word it provides you the easy way to handle the mouse and touch interactions individually and flexibly. unlike browser throwing you bunch of native events (pointer, mouse and touch events), fpoint understands how to capture user inputs and recognize them as an action, with the original input source identified.
 
 ## Quick Start
 

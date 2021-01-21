@@ -37,7 +37,7 @@ export default function TapExample() {
   return (
     <div className='tap-example'>
       <h2>Example</h2>
-      <small>Use mouse or finger (touch screen) to click the square area</small>
+      <small>Use mouse or finger (touch screen) to click the square area. Fingerprint will be solid circle when doing mouse click or a hollow circle when you touch it</small>
       <Tap
         ref={ref}
         className='square'
