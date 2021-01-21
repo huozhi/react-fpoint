@@ -36,6 +36,7 @@ const throttle = (fn, wait) => {
 
 function ScrubExample() {
   const [posState, setPosState] = useState({pageX: 0, offsetX: 0})
+  const [hovering, setHovering] = useState(false)
   const scrubRef = useRef(null)
   function extractPos(e) {
     const parentBcr = scrubRef.current.getBoundingClientRect()
@@ -54,18 +55,27 @@ function ScrubExample() {
     setPosState(posState)
   }, 200)
   
+  const onHoverMove = throttle((e) => {
+    setHovering(true) 
+  })
+  
+  const onHoverEnd = () => setHovering(false)
+  
   const leftPercent = posState.offsetX / document.body.clientWidth * 100
   const topPercent = posState.offsetY / document.body.clientHeight * 100
   return (
     <div>
       <h2>Example</h2>
-      <small>Use mouse or finger (touch screen) to scrub the cube</small>
+      <small>Use mouse or finger (touch screen) to scrub the cube to rotate. colors change while hovering with mouse but not touch</small>
       <Scrub
         ref={scrubRef}
-        onScrubMove={onScrubMove}  
+        onScrubMove={onScrubMove}
+        onHoverMove={onHoverMove}
+        onHoverEnd={onHoverEnd}
       >
         <div className='scrub-example'>
-          <Cube 
+          <Cube
+            isActive={hovering} 
             x={Math.floor(leftPercent / 100 * 360)} 
             y={Math.floor(topPercent / 100 * 360)} 
           />

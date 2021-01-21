@@ -14,12 +14,21 @@ ul {
   list-style: none;
   padding-left: 0;
 }
+nav>.tab {
+  text-decoration: underline;
+  font-size: 18px;
+}
 nav>.tab:hover {
   color: #ccc;
   cursor: pointer;
 }
 nav>.tab:not(:first-child) {
   margin-left: 16px;
+}
+.intro {
+  color: #ccc;
+  font-size: 12px;
+  line-height: 1.5;
 }
 section:not(:target) {
   display: none;
@@ -71,7 +80,10 @@ a h4 {
 .scrub-example .cube {
   margin: auto;
 }
-
+.cube--active .cube__face--front,
+.cube--active .cube__face--left {
+  background-color: rgba(151, 239, 255, 0.3);
+}
 .togglers {
   margin-bottom: 30px;
   display: flex;
