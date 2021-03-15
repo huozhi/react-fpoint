@@ -4,7 +4,6 @@
   "description": "react components for fpoint",
   "main": "dist/cjs.js",
   "module": "dist/esm.js",
-  "types": "dist/index.d.ts",
   "scripts": {
     "prepublishOnly": "rm -rf dist && yarn build",
     "build": "bunchee src/index.ts --no-sourcemap"
@@ -28,7 +27,7 @@
   "bugs": {
     "url": "https://github.com/huozhi/react-fpoint/issues"
   },
-  "homepage": "https://github.com/huozhi/react-fpoint#readme",
+  "homepage": "https://react-fpoint.vercel.app",
   "dependencies": {
     "fpoint": "0.2.8"
   },
