@@ -4,6 +4,7 @@
   "description": "react components for fpoint",
   "main": "dist/cjs.js",
   "module": "dist/esm.js",
+  "types": "./dist/types/index.d.ts",
   "scripts": {
     "prepublishOnly": "rm -rf dist && yarn build",
     "build": "bunchee src/index.ts --no-sourcemap"
