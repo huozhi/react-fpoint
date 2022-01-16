@@ -1,4 +1,9 @@
+# Moved
+
+This project is archived, it's merged into `fpoint` package. Checkout [fpoint/react](https://github.com/huozhi/fpoint#use-with-react) for more details. This repository is no longer maintained
+
 # React Fpoint
+
 > A set of react components make mouse & touching easier
 
 ![npm-version](https://img.shields.io/npm/v/react-fpoint.svg) ![license](https://img.shields.io/npm/l/react-fpoint.svg)
